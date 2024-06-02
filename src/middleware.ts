@@ -16,10 +16,10 @@ export function middleware(req: NextRequest) {
   return NextResponse.next();
 }
 
-function getClientNameFromHostname(hostname: string): string | null {
-  const mappings = {
-    "john.com": "john",
-    "emily.com": "emily",
-  };
-  return mappings[hostname] || null;
-}
+// function getClientNameFromHostname(hostname: string): string | null {
+//   const mappings = {
+//     "john.com": "john",
+//     "emily.com": "emily",
+//   };
+//   return mappings[hostname] || null;
+// }
