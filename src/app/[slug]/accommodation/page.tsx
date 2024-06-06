@@ -15,10 +15,10 @@ interface Accommodation {
   accommodation_excerpt: string;
 }
 
-async function getData(): Promise<Accommodation[]> {
+async function getData(slug: String): Promise<Accommodation[]> {
   try {
     const res = await axios.get(
-      process.env.API_URL + "/accommodation/list/?site_id=1",
+      process.env.API_URL + "/accommodation/list/?slug=" + slug,
       {
         timeout: 5000,
       }
@@ -37,8 +37,12 @@ async function getData(): Promise<Accommodation[]> {
   }
 }
 
-export default async function AccommodationListings() {
-  const accommodations = await getData();
+export default async function AccommodationListings({
+  params,
+}: {
+  params: { slug: String };
+}) {
+  const accommodations = await getData(params.slug);
   console.log(accommodations);
 
   return (
