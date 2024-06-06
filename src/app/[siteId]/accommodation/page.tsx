@@ -16,13 +16,25 @@ interface Accommodation {
 }
 
 async function getData(): Promise<Accommodation[]> {
-  const res = await axios.get(
-    process.env.API_URL + "/accommodation/list/?site_id=1"
-  );
-
-  const data = res.data;
-
-  return data;
+  try {
+    const res = await axios.get(
+      process.env.API_URL + "/accommodation/list/?site_id=1",
+      {
+        timeout: 5000,
+      }
+    );
+    return res.data;
+  } catch (error) {
+    if (axios.isCancel(error)) {
+      console.log("Request canceled:", error.message);
+    } else if (axios.isAxiosError(error) && error.code === "ECONNABORTED") {
+      console.error("Timeout error:", error.message);
+      console.error("Error fetching data:", error);
+    } else {
+      console.error("Error fetching data:", error);
+    }
+    return [];
+  }
 }
 
 export default async function AccommodationListings() {
