@@ -1,4 +1,5 @@
 import { AccommodationCard } from "@/components";
+import { PageContent } from "@/components";
 import { GetServerSideProps } from "next";
 import axios from "axios";
 import { get } from "http";
@@ -46,18 +47,20 @@ export default async function AccommodationListings({
   console.log(accommodations);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      {accommodations.map((accommodation: Accommodation) => (
-        <AccommodationCard
-          key={accommodation.id}
-          slug={accommodation.accommodation_slug}
-          name={accommodation.accommodation_name}
-          price={accommodation.accomodation_price}
-          priceType={accommodation.accommodation_price_type}
-          excerpt={accommodation.accommodation_excerpt}
-        />
-      ))}
-    </div>
+    <PageContent>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {accommodations.map((accommodation: Accommodation) => (
+          <AccommodationCard
+            key={accommodation.id}
+            slug={accommodation.accommodation_slug}
+            name={accommodation.accommodation_name}
+            price={accommodation.accomodation_price}
+            priceType={accommodation.accommodation_price_type}
+            excerpt={accommodation.accommodation_excerpt}
+          />
+        ))}
+      </div>
+    </PageContent>
   );
 }
 
