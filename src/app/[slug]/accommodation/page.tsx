@@ -31,6 +31,7 @@ export default async function AccommodationListings({
               price={accommodation.accomodation_price}
               priceType={accommodation.accommodation_price_type}
               excerpt={accommodation.accommodation_excerpt}
+              currency={siteData.site_currency}
             />
           ))}
         </div>

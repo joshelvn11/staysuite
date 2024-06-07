@@ -6,6 +6,7 @@ interface SiteData {
   site_slug: string;
   site_subdomain: string;
   site_design: string;
+  site_currency: string;
 }
 
 export async function getSiteData(slug: String): Promise<SiteData> {
@@ -29,6 +30,7 @@ export async function getSiteData(slug: String): Promise<SiteData> {
       site_slug: "",
       site_subdomain: "",
       site_design: "",
+      site_currency: "",
     };
   }
 }

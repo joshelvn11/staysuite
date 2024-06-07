@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { getCurrencySymbol } from "@/utils/currencyUtils";
 
 interface AccommodationCardProps {
   key: number;
@@ -15,6 +16,7 @@ interface AccommodationCardProps {
   price: number;
   priceType: number;
   excerpt: string;
+  currency: "USD" | "GBP" | "ZAR";
 }
 
 const AccommodationCard: React.FC<AccommodationCardProps> = (props) => {
@@ -40,6 +42,7 @@ const AccommodationCard: React.FC<AccommodationCardProps> = (props) => {
       <CardFooter>
         <div>
           <p className="text-lg font-semibold">
+            {getCurrencySymbol(props.currency)}
             {props.price} {priceTypeText}
           </p>
         </div>
