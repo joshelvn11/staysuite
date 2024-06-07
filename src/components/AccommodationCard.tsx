@@ -16,7 +16,7 @@ interface AccommodationCardProps {
   price: number;
   priceType: number;
   excerpt: string;
-  currency: "USD" | "GBP" | "ZAR";
+  currency: "USD" | "GBP" | "ZAR" | "EUR" | "JPY" | "AUD" | "CAD";
 }
 
 const AccommodationCard: React.FC<AccommodationCardProps> = (props) => {
