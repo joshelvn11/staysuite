@@ -10,6 +10,7 @@ export interface Accommodation {
   accomodation_price: number;
   accommodation_description: string;
   accommodation_excerpt: string;
+  accommodation_gallery: string;
 }
 
 export async function getAccommodationList(
@@ -65,6 +66,7 @@ export async function getAccommodationDetail(
       accomodation_price: 0,
       accommodation_description: "",
       accommodation_excerpt: "",
+      accommodation_gallery: "",
     };
   }
 }

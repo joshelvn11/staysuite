@@ -1,4 +1,9 @@
-import { RootContainer, Header, PageContent } from "@/components";
+import {
+  RootContainer,
+  Header,
+  PageContent,
+  AccommodationGallery,
+} from "@/components";
 import { getSiteData } from "@/api/siteService";
 import { getAccommodationDetail } from "@/api/accommodationService";
 import { getPriceTypeText } from "@/utils/currencyUtils";
@@ -24,6 +29,9 @@ export default async function AccommodationDetail({
             {getPriceTypeText(accomData.accommodation_price_type)}
           </p>
         </div>
+        <AccommodationGallery
+          gallery={accomData.accommodation_gallery}
+        ></AccommodationGallery>
       </PageContent>
     </RootContainer>
   );
