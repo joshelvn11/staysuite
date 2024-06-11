@@ -1,5 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 interface GalleryObject {
   image_title: string;
@@ -41,7 +48,31 @@ const AccommodationGallery: React.FC<GalleryProps> = (props) => {
     loadImages();
   }, []);
 
-  return <div>{loaded ? <p>Images loaded</p> : <p>Images not loaded</p>}</div>;
+  return (
+    <div>
+      {loaded ? (
+        <Carousel>
+          <CarouselContent>
+            {images.map((image, index) => (
+              <CarouselItem
+                key={index}
+                className="rounded-t-xl border max-h-96 w-full object-cover"
+              >
+                <img
+                  src={image.image_url}
+                  className="rounded-t-xl h-full w-full object-cover"
+                />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
+      ) : (
+        <div className="rounded-t-xl border h-96 w-full bg-slate-200" />
+      )}
+    </div>
+  );
 };
 
 export default AccommodationGallery;
