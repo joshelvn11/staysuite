@@ -13,3 +13,15 @@ export function getCurrencySymbol<String>(
 ) {
   return CURRENCY_SYMBOL_MAP[currencyCode];
 }
+
+export function getPriceTypeText<String>(priceType: number) {
+  let priceTypeText: string = "";
+
+  switch (priceType) {
+    case 0:
+      priceTypeText = "per night";
+      break;
+  }
+
+  return priceTypeText;
+}
