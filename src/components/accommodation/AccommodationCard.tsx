@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { getCurrencySymbol } from "@/utils/currencyUtils";
+import { getCurrencySymbol, getPriceTypeText } from "@/utils/currencyUtils";
 import Link from "next/link";
 
 interface AccommodationCardProps {
@@ -22,12 +22,9 @@ interface AccommodationCardProps {
 }
 
 const AccommodationCard: React.FC<AccommodationCardProps> = (props) => {
-  let priceTypeText: String = "";
-  switch (props.priceType) {
-    case 0:
-      priceTypeText = "per night";
-      break;
-  }
+  let priceTypeText: string = getPriceTypeText(props.priceType);
+
+  const href = `/accommodation/${props.slug}`;
 
   return (
     <Card className="flex flex-col">
@@ -48,7 +45,7 @@ const AccommodationCard: React.FC<AccommodationCardProps> = (props) => {
             {props.price} {priceTypeText}
           </p>
           <Button asChild>
-            <Link href="">View</Link>
+            <Link href={href}>View</Link>
           </Button>
         </div>
       </CardFooter>

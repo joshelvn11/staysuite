@@ -7,7 +7,7 @@ import {
 import { getSiteData } from "@/api/siteService";
 import {
   Accommodation,
-  getAccommodationData,
+  getAccommodationList,
 } from "@/api/accommodationService";
 
 export default async function AccommodationListings({
@@ -16,8 +16,7 @@ export default async function AccommodationListings({
   params: { slug: String };
 }) {
   const siteData = await getSiteData(params.slug);
-  const accommodations = await getAccommodationData(params.slug);
-
+  const accommodations = await getAccommodationList(params.slug);
   return (
     <RootContainer>
       <Header title={siteData.site_name} />
