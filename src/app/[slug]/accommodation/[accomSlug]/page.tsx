@@ -28,7 +28,11 @@ export default async function AccommodationDetail({
           </h2>
         </div>
         <AccommodationGallery
-          gallery={JSON.parse(accomData.accommodation_gallery)}
+          gallery={
+            typeof accomData.accommodation_gallery === "string"
+              ? JSON.parse(accomData.accommodation_gallery)
+              : accomData.accommodation_gallery
+          }
         ></AccommodationGallery>
       </PageContent>
     </RootContainer>
