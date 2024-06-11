@@ -22,15 +22,13 @@ export default async function AccommodationDetail({
     <RootContainer>
       <Header title={siteData.site_name} />
       <PageContent>
-        <div className="flex justify-between w-full">
-          <h2>{accomData.accommodation_name}</h2>
-          <p>
-            {accomData.accomodation_price}{" "}
-            {getPriceTypeText(accomData.accommodation_price_type)}
-          </p>
+        <div className="flex justify-start w-full">
+          <h2 className="text-2xl font-semibold">
+            {accomData.accommodation_name}
+          </h2>
         </div>
         <AccommodationGallery
-          gallery={accomData.accommodation_gallery}
+          gallery={JSON.parse(accomData.accommodation_gallery)}
         ></AccommodationGallery>
       </PageContent>
     </RootContainer>

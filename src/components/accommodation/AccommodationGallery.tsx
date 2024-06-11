@@ -49,7 +49,7 @@ const AccommodationGallery: React.FC<GalleryProps> = (props) => {
   }, []);
 
   return (
-    <div>
+    <div className="py-5">
       {loaded ? (
         <Carousel>
           <CarouselContent>
